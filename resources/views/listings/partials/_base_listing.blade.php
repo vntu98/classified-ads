@@ -12,7 +12,7 @@
             <li style="display: inline-block; margin-right: 15px"><time>{{ $listing->created_at->diffForHumans() }}</time></li>
             <li style="display: inline-block;">{{ $listing->user->name }}</li>
         </ul>
+
+        {{ $links }}
     </div>
 </div>
-
-@yield('links')

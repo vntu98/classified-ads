@@ -54,7 +54,7 @@
 
                                 <div class="form-group">
                                     <label for="message">Message</label>
-                                    <textarea name="message" id="message" cols="30" rows="50" class="form-control"></textarea>
+                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-default">Send</button>
