@@ -6,6 +6,7 @@ use App\Area;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Jobs\UserViewedListing;
 use App\Listing;
 
 class ListingController extends Controller
@@ -22,6 +23,10 @@ class ListingController extends Controller
     {
         if (!$listing->live()) {
             abort(404);
+        }
+
+        if ($request->user()) {
+            dispatch(new UserViewedListing($request->user(), $listing));
         }
 
         return view('listings.show', compact('listing'));
