@@ -28,6 +28,13 @@ Route::group(['prefix' => '/{area}'], function () {
         Route::delete('/{listing}/favorites', 'ListingFavoriteController@destroy')->name('listings.favourites.destroy');
 
         Route::get('/viewed', 'ListingViewedController@index')->name('listings.viewed.index');
+
+        Route::post('/{listing}/contact', 'ListingContactController@store')->name('listings.contact.store');
+
+        Route::group(['middleware' => 'auth'], function () {
+            Route::get('/create', 'ListingController@create')->name('listings.create');
+            Route::post('/', 'ListingController@store')->name('listings.store');
+        });
     });
 
     Route::get('/{listing}', 'Listing\ListingController@show')->name('listings.show');
