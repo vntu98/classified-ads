@@ -31,9 +31,15 @@ Route::group(['prefix' => '/{area}'], function () {
 
         Route::post('/{listing}/contact', 'ListingContactController@store')->name('listings.contact.store');
 
+        Route::get('/{listing}/payment', 'ListingPaymentController@show')->name('listings.payment.show');
+        Route::post('/{listing}/payment', 'ListingPaymentController@store')->name('listings.payment.store');
+
         Route::group(['middleware' => 'auth'], function () {
             Route::get('/create', 'ListingController@create')->name('listings.create');
             Route::post('/', 'ListingController@store')->name('listings.store');
+
+            Route::get('/{listing}/edit', 'ListingController@edit')->name('listings.edit');
+            Route::patch('/{listing}', 'ListingController@update')->name('listings.update');
         });
     });
 
